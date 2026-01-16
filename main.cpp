@@ -5,6 +5,8 @@
 #include <thread>
 #include <chrono>
 
+#include "tabs/about-me.cpp"
+
 using namespace ftxui; // Save typing: allows writing 'text' instead of 'ftxui::text'
 
 Element RenderNavbar()
@@ -46,8 +48,8 @@ int main()
         else {
             Element navbar = RenderNavbar();
             
-            auto body = filler() | border;
-    
+            auto body = aboutMe() | border | flex;
+
             return vbox({navbar,body});
         }
     });
@@ -56,7 +58,7 @@ int main()
 
     using namespace std::chrono_literals;
     std::thread([&] {
-        std::this_thread::sleep_for(5s); // Wait
+        std::this_thread::sleep_for(0s); // Wait
         show_blinker = false;              // Flip switch
         screen.Post(Event::Custom);      // Wake up screen
     }).detach();                         // Run in background
