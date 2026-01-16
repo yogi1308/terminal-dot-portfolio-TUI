@@ -50,6 +50,8 @@ int main()
 
             auto body = aboutMe() | flex;
 
+            int width = Terminal::Size().dimx;
+
             return vbox({navbar,body});
         }
     });
