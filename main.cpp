@@ -46,9 +46,9 @@ int main()
             return blinker() | center;
         }
         else {
-            Element navbar = RenderNavbar() | borderEmpty;
+            Element navbar = RenderNavbar();
 
-            auto body = aboutMe() | borderEmpty | borderEmpty | flex;
+            auto body = aboutMe() | flex;
 
             return vbox({navbar,body});
         }
