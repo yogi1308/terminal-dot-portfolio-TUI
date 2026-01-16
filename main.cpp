@@ -48,7 +48,9 @@ int main()
         else {
             Element navbar = RenderNavbar();
 
-            auto body = aboutMe() | flex;
+            Element body = vscroll_indicator(aboutMe()) | flex;
+
+                // auto body = aboutMe() | flex;
 
             int width = Terminal::Size().dimx;
 

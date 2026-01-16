@@ -4,79 +4,52 @@
 
 using namespace ftxui;
 
-Element Skills(){
-    FlexboxConfig config;
-    config.wrap = FlexboxConfig::Wrap::Wrap;
-    config.gap_x = 3;
-    config.gap_y = 1;
+Element Skills()
+{
+    auto accent = Color::RGB(77, 163, 255);
 
-    return vbox({text("Skills") | color(Color::RGB(77, 163, 255)), separator(),
-                 flexbox({hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" C++")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" Java")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" Python")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" HTML")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" CSS")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" JavaScript")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" ReactJS")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" ExpressJS")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" NodeJS")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" PostgresSQL")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" Git")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" Linux")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" Prisma ORM")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" TypeScript")}),
-                          hbox({text("[>]") | color(Color::RGB(77, 163, 255)), text(" Tailwind")})},
-                         config)});
+    auto RenderCategory = [&](std::string title, std::vector<std::string> skills)
+    {
+        std::vector<Element> items;
+
+        // FIX: Use index loop to detect the last element
+        for (size_t i = 0; i < skills.size(); ++i)
+        {
+
+            // 1. Create the skill Text
+            auto skill_name = text(" " + skills[i] + " ");
+
+            // 2. Check: Is this the last item?
+            if (i == skills.size() - 1)
+            {
+                // Yes: Just add the name (No arrow)
+                items.push_back(skill_name);
+            }
+            else
+            {
+                // No: Add name + arrow
+                items.push_back(hbox({skill_name,
+                                      text(">") | color(accent)}));
+            }
+        }
+
+        return hbox({text(title) | color(accent),
+                     flexbox(items, FlexboxConfig().SetGap(1, 0))});
+    };
+
+    return vbox({text("Skills") | color(accent) | bold,
+                 separator(),
+
+                 vbox({
+                     RenderCategory("[ Languages ]", {"C++", "Python", "Java", "JavaScript", "TypeScript"}),
+                     text(" "),
+                     RenderCategory("[ FrontEnd  ]", {"ReactJS", "TailWindCSS", "HTML", "CSS"}),
+                     text(" "),
+                     RenderCategory("[  BackEnd  ]", {"NodeJS", "ExpressJS", "PostgreSQL", "Prisma ORM"}),
+                     text(" "),
+                     RenderCategory("[   Tools   ]", {"Git", "Linux", "Windows"}),
+                 })});
 }
-
-// Element Skills()
-// {
-//     return vbox({
-//         text("Skills") | color(Color::RGB(77, 163, 255)), separator(),
-//         gridbox({
-//             {hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" C++")}), hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" Java")})},
-//             {hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" Python")}), hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" HTML")})},
-//             {hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" CSS")}), hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" JavaScript")})},
-//             {hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" ReactJS")}), hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" ExpressJS")})},
-//             {hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" NodeJS")}), hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" PostgresSQL")})},
-//             {hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" Git")}), hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" Linux")})},
-//             {hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" Prisma ORM")}), hbox({text("[✱]") | color(Color::RGB(77, 163, 255)), text(" Tailwind")})}
-//         })
-//     });
-// }
-
-// #include <ftxui/dom/elements.hpp>
-// #include <ftxui/dom/table.hpp>
-
-// using namespace ftxui;
-
-// Element Skills()
-// {
-//     // 1. Define color once to keep code clean
-//     auto accent = Color::RGB(77, 163, 255);
-
-//     // 2. Helper function to style every skill consistently
-//     auto render_skill = [&](std::string name)
-//     {
-//         return hbox({text("[✱]") | color(accent),
-//                      text(" " + name)}) |
-//                size(WIDTH, GREATER_THAN, 22);                // Fix 2: Invisible Border (Vertical Spacing)
-//     };
-
-//     return vbox({
-//         text("Skills") | color(accent) | bold | center,
-//         separatorLight(),
-
-//         // 3. The cleaner Gridbox
-//         gridbox({{render_skill("C++"), render_skill("Java")},
-//                  {render_skill("Python"), render_skill("HTML")},
-//                  {render_skill("CSS"), render_skill("JavaScript")},
-//                  {render_skill("ReactJS"), render_skill("ExpressJS")},
-//                  {render_skill("NodeJS"), render_skill("PostgresSQL")},
-//                  {render_skill("Git"), render_skill("Linux")},
-//                  {render_skill("Prisma ORM"), render_skill("Tailwind")}})
-//     });
-// }
 
 // --- Helper Function ---
 // Splits a multi-line string into a vertical box of individual text elements.
