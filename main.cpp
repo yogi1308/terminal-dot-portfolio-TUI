@@ -10,31 +10,9 @@
 #include "tabs/experience.cpp"
 #include "tabs/projects.cpp"
 #include "tabs/contact-me.cpp"
+#include "components/navbar.cpp"
 
 using namespace ftxui; // Save typing: allows writing 'text' instead of 'ftxui::text'
-
-Element RenderNavbar(int active_tab)
-{
-    FlexboxConfig config;
-    config.justify_content = FlexboxConfig::JustifyContent::SpaceEvenly;
-
-    return flexbox({
-        text("shreetej hadge") | center,
-        separatorLight() | color(Color::GrayDark),
-        
-        // Use the helper with the corresponding index (0, 1, 2, 3)
-        tab("a", "about me", 0),
-        separatorLight() | color(Color::GrayDark),
-        
-        tab("e", "experience", 1),
-        separatorLight() | color(Color::GrayDark),
-        
-        tab("p", "projects", 2),
-        separatorLight() | color(Color::GrayDark),
-        
-        tab("c", "contact me", 3)
-    }, config) | borderStyled(LIGHT, Color::GrayDark);
-}
 
 Element blinker() {
     FlexboxConfig config;
@@ -65,7 +43,7 @@ int main()
             return blinker() | center;
         }
         else {
-            Element navbar = RenderNavbar(tab_index);
+            Element navbar = Navbar(tab_index);
             Element body;
             switch (tab_index) {
                 case 0: body = AboutMe() | borderEmpty; break;
