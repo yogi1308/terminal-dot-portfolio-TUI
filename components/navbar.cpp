@@ -5,7 +5,7 @@ using namespace ftxui; // Save typing: allows writing 'text' instead of 'ftxui::
 
 Element Active_Tab(std::string tab) 
 {
-    return hbox({text("> ") | color(Color::RGB(77, 163, 255)), text(tab)}) | center;
+    return hbox({text("> ") | color(Color::RGB(77, 163, 255)) | center, text(tab)}) | center;
 }
 
 Element Inactive_Tab(std::string tab)
