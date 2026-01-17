@@ -53,7 +53,7 @@ int main()
 
             // Element body = vscroll_indicator(aboutMe()) | flex;
 
-            auto body = ContactMe() | flex | borderEmpty;
+            auto body = ContactMe() | borderEmpty;
 
             int width = Terminal::Size().dimx;
 

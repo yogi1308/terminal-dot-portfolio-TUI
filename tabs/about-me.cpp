@@ -15,7 +15,7 @@ Element Skills()
         ({
             hbox
             ({
-                text("[ Languages ] ") | color(accent),
+                text("[ languages ] ") | color(accent),
                 flexbox
                 ({
                     hbox({text("C++"), text(" > ")| color(accent)}),
@@ -27,7 +27,7 @@ Element Skills()
             }),
             hbox
             ({
-                text("[ FrontEnd  ] ") | color(accent),
+                text("[ frontend  ] ") | color(accent),
                 flexbox
                 ({
                     hbox({text("ReactJS"), text(" > ")| color(accent)}),
@@ -38,7 +38,7 @@ Element Skills()
             }),
             hbox
             ({
-                text("[  BackEnd  ] ") | color(accent),
+                text("[ backend   ] ") | color(accent),
                 flexbox
                 ({
                     hbox({text("NodeJS"), text(" > ")| color(accent)}),
@@ -49,7 +49,7 @@ Element Skills()
             }),
             hbox
             ({
-                text("[   Tools   ] ") | color(accent),
+                text("[ tools     ] ") | color(accent),
                 flexbox
                 ({
                     hbox({text("Git"), text(" > ")| color(accent)}),

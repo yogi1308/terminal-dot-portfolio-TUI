@@ -1,23 +1,34 @@
 #include <ftxui/dom/elements.hpp>
+#include <ftxui/component/component.hpp>
 
 using namespace ftxui;
 
 Element ContactMe()
 {
-    return hbox
+    return vbox
     ({
         flexbox
         ({
-            text("Email"),
-            text("LinkedIn"),
-            text("GitHub")
-        }, FlexboxConfig()
-            .Set(FlexboxConfig::Direction::Column)
-            .SetGap(0, 1)
-        ),
+            text("☉   send me a message"),
+            text("enter") | color(Color::GrayDark)
+        }, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceBetween)) | borderLight,
         separatorEmpty(),
-        separator(),
-        separatorEmpty(),
-        text("shreetej.yogi@gmail.com")
+        hbox
+        ({
+            vbox
+            ({
+                text("email") | borderEmpty,
+                text("linkedin") | borderLight,
+                text("github") | borderEmpty
+            }),
+            separatorEmpty(),
+            separator(),
+            separatorEmpty(),
+            hbox
+            ({
+                text(" > ") | color(Color::RGB(77, 163, 255)),
+                text("shreetej.yogi@gmail.com")
+            }) | center
+        })
     });
 }

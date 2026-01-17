@@ -28,7 +28,7 @@ Element Projects() {
             }, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceBetween)),
             hbox
             ({
-                text("[ Preview ] "),
+                text("[ preview ] "),
                 paragraph("https://file-uploader-orpin.vercel.app/")
             }) | color(Color::GrayDark),
             hbox
@@ -38,7 +38,7 @@ Element Projects() {
             }) | color(Color::GrayDark),
             hbox
             ({
-                text("[  Stack  ] "),
+                text("[  stack  ] "),
                 paragraph("Node.js | Express | PostgreSQL | Prisma | Cloudinary | Embedded JavaScript(ejs)")
             }) | color(Color::GrayDark),
 
