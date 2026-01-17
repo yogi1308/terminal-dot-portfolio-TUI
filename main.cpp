@@ -7,6 +7,7 @@
 
 #include "tabs/about-me.cpp"
 #include "tabs/experience.cpp"
+#include "tabs/projects.cpp"
 
 using namespace ftxui; // Save typing: allows writing 'text' instead of 'ftxui::text'
 
