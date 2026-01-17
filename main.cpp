@@ -11,6 +11,7 @@
 #include "tabs/projects.cpp"
 #include "tabs/contact-me.cpp"
 #include "components/navbar.cpp"
+#include "components/footer.cpp"
 
 using namespace ftxui; // Save typing: allows writing 'text' instead of 'ftxui::text'
 
@@ -45,17 +46,18 @@ int main()
         else {
             Element navbar = Navbar(tab_index);
             Element body;
+            Element footer;
             switch (tab_index) {
-                case 0: body = AboutMe() | borderEmpty; break;
-                case 1: body = Experience() | borderEmpty; break;
-                case 2: body = Projects() | borderEmpty; break;
-                case 3: body = ContactMe() | borderEmpty; break; 
+                case 0: body = AboutMe() | borderEmpty; footer = Footer("about me"); break;
+                case 1: body = Experience() | borderEmpty; footer = Footer("experience"); break;
+                case 2: body = Projects() | borderEmpty; footer = Footer("projects"); break;
+                case 3: body = ContactMe() | borderEmpty; footer = Footer("contact me"); break; 
                 default: body = AboutMe() | borderEmpty; break;
             }
 
             int width = Terminal::Size().dimx;
 
-            return vbox({navbar,body})| borderEmpty;
+            return vbox({navbar, body | flex, separator() | color(Color::GrayDark), footer})| borderEmpty;
         }
     });
 
