@@ -8,6 +8,7 @@
 #include "tabs/about-me.cpp"
 #include "tabs/experience.cpp"
 #include "tabs/projects.cpp"
+#include "tabs/contact-me.cpp"
 
 using namespace ftxui; // Save typing: allows writing 'text' instead of 'ftxui::text'
 
@@ -52,7 +53,7 @@ int main()
 
             // Element body = vscroll_indicator(aboutMe()) | flex;
 
-            auto body = AboutMe() | flex | borderEmpty;
+            auto body = ContactMe() | flex | borderEmpty;
 
             int width = Terminal::Size().dimx;
 
