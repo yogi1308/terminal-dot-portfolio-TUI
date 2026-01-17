@@ -6,6 +6,7 @@
 #include <chrono>
 
 #include "tabs/about-me.cpp"
+#include "tabs/experience.cpp"
 
 using namespace ftxui; // Save typing: allows writing 'text' instead of 'ftxui::text'
 
@@ -48,13 +49,13 @@ int main()
         else {
             Element navbar = RenderNavbar();
 
-            Element body = vscroll_indicator(aboutMe()) | flex;
+            // Element body = vscroll_indicator(aboutMe()) | flex;
 
-                // auto body = aboutMe() | flex;
+            auto body = Experience() | flex | borderEmpty;
 
             int width = Terminal::Size().dimx;
 
-            return vbox({navbar,body});
+            return vbox({navbar,body})| borderEmpty;
         }
     });
 
