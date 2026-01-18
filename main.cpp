@@ -18,14 +18,17 @@
 
 using namespace ftxui;
 
-Element blinker(bool is_visible) {
-    FlexboxConfig config;
-    config.justify_content = FlexboxConfig::JustifyContent::Center;
+const int MIN_WIDTH = 110;
+const int TARGET_AREA = 3500;   // The "Total Space" you need (e.g. 100x30 = 3000)
 
-    return flexbox({
-        text("shreetej hadge"),
-        is_visible ? text("█") | color(Color::RGB(77, 163, 255)) : text(" ") 
-    }, config);
+// Helper to calculate height using INVERSE ratio
+int get_min_height(int current_width) {
+    if (current_width <= 0) return 999; // Safety check
+    return TARGET_AREA / current_width;
+}
+
+Element blinker(bool is_visible) {
+    return is_visible ? text("█") | color(Color::RGB(77, 163, 255)) : text(" ");
 }
 
 
@@ -41,7 +44,7 @@ int main()
 
     using namespace std::chrono_literals; // loader
     std::thread([&] {
-        for (int i = 0; i < 10; ++i) {  // Loop 20 times: 20 * 0.5s = 10 seconds
+        for (int i = 0; i < 7.5; ++i) {  // Loop 20 times: 20 * 0.5s = 10 seconds
             std::this_thread::sleep_for(0.5s); 
             blink_state = !blink_state;  
             screen.Post(Event::Custom);  
@@ -51,8 +54,21 @@ int main()
     }).detach();
 
     auto renderer = Renderer([&] { 
+        auto term_size = Terminal::Size();
+        int req_height = get_min_height(term_size.dimx);
+        if (term_size.dimx < MIN_WIDTH || term_size.dimy < req_height) {
+            return hbox({
+                text("please resize your terminal, your terminal window is not big enough or zoom out") | bold, // blinker()
+            }) | center ;
+        }
         if (show_blinker) {
-            return blinker(blink_state) | center;
+            FlexboxConfig config;
+            config.justify_content = FlexboxConfig::JustifyContent::Center;
+
+            return flexbox({
+                text("shreetej hadge"),
+                blinker(blink_state),
+            }, config) | center;
         }
         else {
             Element navbar = Navbar(tab_index);
@@ -79,11 +95,14 @@ int main()
     });
 
     auto component = CatchEvent(renderer, [&](Event event) {
-        if (event == Event::Character('a') && !show_contact_form) { tab_index = 0; return true; }
+        auto term_size = Terminal::Size();
+        int req_height = get_min_height(term_size.dimx);
+        if (event == Event::Character('q') && !show_contact_form){screen.Exit(); return true;}
+        else if (term_size.dimx < MIN_WIDTH || term_size.dimy < req_height) {return true;}
+        else if (event == Event::Character('a') && !show_contact_form) { tab_index = 0; return true;}
         else if (event == Event::Character('e') && !show_contact_form){tab_index = 1; return true;}
         else if (event == Event::Character('p') && !show_contact_form){tab_index = 2; return true;}
         else if (event == Event::Character('c') && !show_contact_form){tab_index = 3; return true;}
-        else if (event == Event::Character('q') && !show_contact_form){screen.Exit(); return true;}
         else if (event == Event::ArrowUp && tab_index == 1 && !show_contact_form) {exp_tab--;}
         else if (event == Event::ArrowDown && tab_index == 1 && !show_contact_form) {exp_tab++;}
         else if (event == Event::ArrowUp && tab_index == 2 && !show_contact_form) {proj_tab--;}

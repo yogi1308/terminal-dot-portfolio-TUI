@@ -25,7 +25,7 @@ Element Skills()
                     BulletPoints("JavaScript  "),
                     BulletPoints("TypeScript  ")
                 }, FlexboxConfig().Set(FlexboxConfig::Wrap::Wrap))
-            }),
+            }), separatorEmpty(),
             hbox
             ({
                 text("[ frontend  ] ") | color(accent),
@@ -36,7 +36,7 @@ Element Skills()
                     BulletPoints("HTML  "),
                     BulletPoints("CSS  ")
                 }, FlexboxConfig().Set(FlexboxConfig::Wrap::Wrap))
-            }),
+            }), separatorEmpty(),
             hbox
             ({
                 text("[  backend  ] ") | color(accent),
@@ -47,7 +47,7 @@ Element Skills()
                     BulletPoints("PostgreSQL  "),
                     BulletPoints("Prisma ORM  ")
                 }, FlexboxConfig().Set(FlexboxConfig::Wrap::Wrap))
-            }),
+            }), separatorEmpty(),
             hbox
             ({
                 text("[   tools   ] ") | color(accent),
