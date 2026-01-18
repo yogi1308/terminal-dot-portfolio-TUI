@@ -3,7 +3,7 @@
 
 using namespace ftxui;
 
-Element ContactMe()
+Element ContactMe(int contact_tab)
 {
     return vbox
     ({

@@ -49,7 +49,7 @@ Element ExperinceDetails(std::string position, std::string dates, std::string lo
     });
 }
 
-Element Experience() 
+Element Experience(int exp_tab) 
 {
     return hbox
     ({

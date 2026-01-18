@@ -1,15 +1,11 @@
 #include <ftxui/dom/elements.hpp>
-#include <string>
 
 using namespace ftxui; // Save typing: allows writing 'text' instead of 'ftxui::text'
 
-Element Active_Tab(std::string tab) 
-{
+Element Active_Tab(std::string tab) {
     return hbox({text("> ") | color(Color::RGB(77, 163, 255)) | center, text(tab)}) | center;
 }
-
-Element Inactive_Tab(std::string tab)
-{
+Element Inactive_Tab(std::string tab) {
     tab = " " + tab;
     return hbox({text(std::string(1, tab[1])), text(tab) | color(Color::GrayDark)}) | center;
 }

@@ -30,7 +30,10 @@ int main()
 {
     bool show_blinker = true;
     int tab_index = 0;
-    auto screen = ScreenInteractive::Fullscreen(); // Initialize the screen in "Alternate Buffer" mode (like vim)
+    int exp_tab = 0;
+    int proj_tab = 0;
+    int contact_tab = 0;
+    auto screen = ScreenInteractive::Fullscreen();
 
     using namespace std::chrono_literals; // loader
     std::thread([&] {
@@ -39,7 +42,7 @@ int main()
         screen.Post(Event::Custom);      // Wake up screen
     }).detach();                         // Run in background
 
-    auto renderer = Renderer([&] { // Create a component that defines how to draw the UI
+    auto renderer = Renderer([&] { 
         if (show_blinker) {
             return blinker() | center;
         }
@@ -49,9 +52,9 @@ int main()
             Element footer;
             switch (tab_index) {
                 case 0: body = AboutMe() | borderEmpty; footer = Footer("about me"); break;
-                case 1: body = Experience() | borderEmpty; footer = Footer("experience"); break;
-                case 2: body = Projects() | borderEmpty; footer = Footer("projects"); break;
-                case 3: body = ContactMe() | borderEmpty; footer = Footer("contact me"); break; 
+                case 1: body = Experience(exp_tab) | borderEmpty; footer = Footer("experience"); break;
+                case 2: body = Projects(proj_tab) | borderEmpty; footer = Footer("projects"); break;
+                case 3: body = ContactMe(contact_tab) | borderEmpty; footer = Footer("contact me"); break; 
                 default: body = AboutMe() | borderEmpty; break;
             }
 
@@ -67,11 +70,18 @@ int main()
         else if (event == Event::Character('p')){tab_index = 2; return true;}
         else if (event == Event::Character('c')){tab_index = 3; return true;}
         else if (event == Event::Character('q') || event == Event::Escape){screen.Exit(); return true;}
+        else if (event == Event::ArrowUp && tab_index == 1) {exp_tab--;}
+        else if (event == Event::ArrowDown && tab_index == 1) {exp_tab++;}
+        else if (event == Event::ArrowUp && tab_index == 2) {proj_tab--;}
+        else if (event == Event::ArrowDown && tab_index == 2) {proj_tab++;}
+        else if (event == Event::ArrowUp && tab_index == 3) {contact_tab--;}
+        else if (event == Event::ArrowDown && tab_index == 3) {contact_tab++;}
+
         return false;
     });
 
-    screen.Loop(component);                         // Start the infinite event loop (blocks here until quit)
+    screen.Loop(component);                      
 
 
-    return 0; // Exit program (only reached if the loop is broken)
+    return 0; 
 }

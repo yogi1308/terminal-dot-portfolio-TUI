@@ -1,5 +1,6 @@
 #include <ftxui/dom/elements.hpp>
 #include "../helpers/bullet-points.cpp"
+#include "../components/sidebar.cpp"
 
 using namespace ftxui;
 
@@ -20,7 +21,7 @@ Element ProjectDetailPoints(std::string name)
             BulletPoints("Implemented comprehensive error handling for API timeouts, authentication failures, and network issues with user-friendly troubleshooting messages.")
         });
     }
-    else if (name == "CLI Art")
+    else if (name == "CLI Art Generator")
     {
         return vbox({
             BulletPoints("Developed a Python command-line tool to convert images from local files or web URLs into full-color ASCII art, with argparse to provide users with full control over output width, color modes, brightness/contrast, and inversion."),
@@ -78,23 +79,34 @@ Element ProjectDetails(std::string name, std::string date, std::string preview, 
         });
 }
 
-Element Projects() {
+Element Projects(int proj_tab) {
+
+    std::string name, date, preview, src, stack;
+    proj_tab = ((proj_tab % 5) + 5) % 5;
+
+    switch (proj_tab) {
+        case 0: name = "ssh terminal.portfolio" ; date = "January 2025" ; preview = "ssh terminal.portfolio.shreetej" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake" ; break;
+        case 1: name = "Basic Google Drive" ; date = "December 2025" ; preview = "https://file-uploader-orpin.vercel.app/" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "" ; break;
+        case 2: name = "Git Gemini Automation Shell Script" ; date = "November 2025" ; preview = "https://github.com/yogi1308/shell-scripts" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "" ; break;
+        case 3: name = "CLI Art Generator" ; date = "November 2025" ; preview = "https://github.com/yogi1308/cli-art" ; src = "https://github.com/yogi1308/cli-art" ; stack = "" ; break; 
+        case 4: name = "Resume/CV Builder" ; date = "June 2025" ; preview = "https://sunny-fudge-81c254.netlify.app/" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "" ; break; 
+        default: name = "ssh terminal.portfolio" ; date = "January 2025" ; preview = "ssh terminal.portfolio.shreetej" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake" ; break;
+    }
+
+    std::string my_tabs[] = {
+        "ssh terminal.portfolio", 
+        "Basic Google Drive",
+        "Git Gemini Automation Shell Script", 
+        "CLI Art Generator", 
+        "Resume/CV Builder"
+    };
+
     return hbox
     ({
-        flexbox
-        ({
-            paragraph("ssh terminal.portfolio"),
-            paragraph("Basic Google Drive"),
-            paragraph("Git Gemini Automation Shell Script"),
-            paragraph("CLI Art"),
-            paragraph("Resume/CV Builder")
-        }, FlexboxConfig()
-            .Set(FlexboxConfig::Direction::Column)
-            .SetGap(0, 1)
-        ),
+        Sidebar(my_tabs, proj_tab, 5),
         separatorEmpty(),
         separator(),
         separatorEmpty(),
-        ProjectDetails("ssh terminal.portfolio", "January 2025", "ssh terminal.portfolio.shreetej", "https://github.com/yogi1308/terminal-dot-portfolio-TUI", "C++ | CMake")
+        ProjectDetails(name, date, preview, src, stack)
     });
 }
