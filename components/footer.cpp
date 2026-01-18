@@ -29,7 +29,7 @@ Element Footer(std::string tab) {
     }
     else if (tab == "contact form")
     {
-        return flexbox({FooterElement("tab/shift+tab ", "navigate input elements"), FooterElement("enter ", "submit"), FooterElement("ctrl+enter/shift+enter ", "newline"), FooterElement("esc ", "back")}, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceEvenly));
+        return flexbox({FooterElement("tab/shift+tab ", "navigate"), FooterElement("ctrl+enter ", "submit"), FooterElement("enter ", "newline"), FooterElement("esc ", "back")}, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceEvenly));
     }
     return text("");
 }

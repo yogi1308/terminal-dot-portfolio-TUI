@@ -13,6 +13,8 @@
 #include "components/navbar.cpp"
 #include "components/footer.cpp"
 #include "tabs/contact-form.cpp"
+#include "helpers/validate-input.cpp"
+#include "helpers/send-message.cpp"
 
 using namespace ftxui;
 
@@ -34,6 +36,8 @@ int main()
     int tab_index{0}, exp_tab{0}, proj_tab{0}, contact_tab{0};
     auto screen = ScreenInteractive::Fullscreen();
     bool blink_state = true;
+    std::string form_status = "";
+    Color form_status_color = Color::Default;
 
     using namespace std::chrono_literals; // loader
     std::thread([&] {
@@ -55,7 +59,7 @@ int main()
             Element body;
             Element footer;
             if (tab_index == 3 && show_contact_form) {
-                body = ContactForm(input_name, input_email, input_message) | borderEmpty;
+                body = ContactForm(input_name, input_email, input_message, form_status, form_status_color) | borderEmpty;
                 footer = Footer("contact form");
             }
             else {
@@ -88,6 +92,30 @@ int main()
         else if (event == Event::ArrowDown && tab_index == 3 && !show_contact_form) {contact_tab++;}
         else if (event == Event::Return && tab_index == 3 && !show_contact_form) {show_contact_form = true; return true;}
         else if (event == Event::Escape && show_contact_form) {show_contact_form = false; return true;}
+        else if (event == Event::Return && show_contact_form) {
+            bool is_valid = validate_input(name, email, message, form_status, form_status_color); 
+            if (is_valid) {
+                form_status = "Sending...";
+                form_status_color = Color::Yellow;
+                
+                std::thread([&, name_val=name, email_val=email, msg_val=message] { // Spawn a detached thread so the UI doesn't freeze while waiting for curl
+                    
+                    bool success = send_message(name_val, email_val, msg_val);
+
+                    if (success) {
+                        form_status = "Message Sent Successfully!";
+                        form_status_color = Color::Green;
+                        name = ""; email = ""; message = "";
+                    } else {
+                        form_status = "Error: Failed to send message.";
+                        form_status_color = Color::Red;
+                    }
+                    
+                    screen.Post(Event::Custom); // Wake up the UI to show the new status
+                }).detach();
+            }
+            return true;
+        }
         else if (show_contact_form) {if (contact_form_container->OnEvent(event)) return true;}
 
         return false;

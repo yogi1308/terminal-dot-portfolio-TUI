@@ -20,7 +20,7 @@ auto contact_form_container = Container::Vertical({
     input_message,
 });
 
-Element ContactForm(Component name_comp, Component email_comp, Component message_comp) {
+Element ContactForm(Component name_comp, Component email_comp, Component message_comp,std::string status_message, Color status_color) {
     return vbox({
         text("send me a message") | bold | color(Color::RGB(77, 163, 255)),
         separator(),
@@ -47,6 +47,7 @@ Element ContactForm(Component name_comp, Component email_comp, Component message
                 text("> ") | color(Color::RGB(77, 163, 255)),
                 message_comp->Render() 
             })
-        }) | flex
+        }) | flex,
+        text(status_message) | center | bold | color(status_color)
     });
 }
