@@ -29,10 +29,7 @@ Element blinker() {
 int main()
 {
     bool show_blinker = true;
-    int tab_index = 0;
-    int exp_tab = 0;
-    int proj_tab = 0;
-    int contact_tab = 0;
+    int tab_index{0}, exp_tab{0}, proj_tab{0}, contact_tab{0};
     auto screen = ScreenInteractive::Fullscreen();
 
     using namespace std::chrono_literals; // loader

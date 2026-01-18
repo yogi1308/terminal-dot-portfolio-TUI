@@ -1,25 +1,24 @@
+#pragma once
 #include <ftxui/dom/elements.hpp>
+#include "../helpers/bullet-points.cpp"
 
 using namespace ftxui; // Save typing: allows writing 'text' instead of 'ftxui::text'
 
-Element Active_Tab(std::string tab) {
-    return hbox({text("> ") | color(Color::RGB(77, 163, 255)) | center, text(tab)}) | center;
-}
-Element Inactive_Tab(std::string tab) {
+inline Element Inactive_Tab(std::string tab) {
     tab = " " + tab;
-    return hbox({text(std::string(1, tab[1])), text(tab) | color(Color::GrayDark)}) | center;
+    return hbox({text(std::string(1, tab[1])), text(tab) | color(Color::GrayDark)});
 }
 
-Element Navbar_Tabs(int active_tab, std::string tab) 
+inline Element Navbar_Tabs(int active_tab, std::string tab) 
 {
-    if (active_tab == 0 && tab == "about me") {return Active_Tab(tab);}
-    else if (active_tab == 1 && tab == "experience"){return Active_Tab(tab);}
-    else if (active_tab == 2 && tab == "projects"){return Active_Tab(tab);}
-    else if (active_tab == 3 && tab == "contact me"){return Active_Tab(tab);}
+    if (active_tab == 0 && tab == "about me") {return BulletPoints(tab);}
+    else if (active_tab == 1 && tab == "experience"){return BulletPoints(tab);}
+    else if (active_tab == 2 && tab == "projects"){return BulletPoints(tab);}
+    else if (active_tab == 3 && tab == "contact me"){return BulletPoints(tab);}
     else{return Inactive_Tab(tab);}
 }
 
-Element Navbar(int active_tab)
+inline Element Navbar(int active_tab)
 {
     FlexboxConfig config;
     config.justify_content = FlexboxConfig::JustifyContent::SpaceEvenly;

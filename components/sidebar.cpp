@@ -2,7 +2,7 @@
 
 #include <ftxui/dom/elements.hpp>
 
-using namespace ftxui; // Save typing: allows writing 'text' instead of 'ftxui::text'
+using namespace ftxui;
 
 inline Element Sidebar_Active_Tab(std::string tab) {
     if (tab == "Git Gemini Automation Shell Script") {

@@ -1,6 +1,7 @@
 #include <ftxui/dom/elements.hpp>
 #include <sstream> // <--- REQUIRED: Needed to split the string
 #include <vector>
+#include "../helpers/bullet-points.cpp"
 
 using namespace ftxui;
 
@@ -18,11 +19,11 @@ Element Skills()
                 text("[ languages ] ") | color(accent),
                 flexbox
                 ({
-                    hbox({text("C++"), text(" > ")| color(accent)}),
-                    hbox({text("Python"), text(" > ")| color(accent)}),
-                    hbox({text("Java"), text(" > ")| color(accent)}),
-                    hbox({text("JavaScript"), text(" > ")| color(accent)}),
-                    text("TypeScript")
+                    text("C++ "),
+                    BulletPoints("Python  "),
+                    BulletPoints("Java  "),
+                    BulletPoints("JavaScript  "),
+                    BulletPoints("TypeScript  ")
                 }, FlexboxConfig().Set(FlexboxConfig::Wrap::Wrap))
             }),
             hbox
@@ -30,10 +31,10 @@ Element Skills()
                 text("[ frontend  ] ") | color(accent),
                 flexbox
                 ({
-                    hbox({text("ReactJS"), text(" > ")| color(accent)}),
-                    hbox({text("TailWindCSS"), text(" > ")| color(accent)}),
-                    hbox({text("HTML"), text(" > ")| color(accent)}),
-                    text("CSS")
+                    text("ReactJS "),
+                    BulletPoints("TailWindCSS  "),
+                    BulletPoints("HTML  "),
+                    BulletPoints("CSS  ")
                 }, FlexboxConfig().Set(FlexboxConfig::Wrap::Wrap))
             }),
             hbox
@@ -41,10 +42,10 @@ Element Skills()
                 text("[  backend  ] ") | color(accent),
                 flexbox
                 ({
-                    hbox({text("NodeJS"), text(" > ")| color(accent)}),
-                    hbox({text("ExpressJS"), text(" > ")| color(accent)}),
-                    hbox({text("PostgreSQL"), text(" > ")| color(accent)}),
-                    text("Prisma ORM")
+                    text("NodeJS "),
+                    BulletPoints("ExpressJS  "),
+                    BulletPoints("PostgreSQL  "),
+                    BulletPoints("Prisma ORM  ")
                 }, FlexboxConfig().Set(FlexboxConfig::Wrap::Wrap))
             }),
             hbox
@@ -52,9 +53,9 @@ Element Skills()
                 text("[   tools   ] ") | color(accent),
                 flexbox
                 ({
-                    hbox({text("Git"), text(" > ")| color(accent)}),
-                    hbox({text("Linux"), text(" > ")| color(accent)}),
-                    text("Window")
+                    text("Git "),
+                    BulletPoints("Linux  "),
+                    BulletPoints("Window  ")
                 }, FlexboxConfig().Set(FlexboxConfig::Wrap::Wrap))
             })
         })

@@ -63,7 +63,7 @@ Element Experience(int exp_tab)
     }
 
     std::string my_tabs[] = {
-        "Office Assistant", "Documentation Lead", "Meeting Lead"
+        "office assistant", "documentation lead", "meeting lead"
     };
 
     return hbox

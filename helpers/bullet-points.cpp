@@ -1,5 +1,4 @@
-#ifndef BULLET_POINTS_CPP
-#define BULLET_POINTS_CPP
+#pragma once
 
 #include <ftxui/dom/elements.hpp>
 
@@ -12,5 +11,3 @@ Element BulletPoints(std::string details)
         paragraph(details)
     });
 }
-
-#endif

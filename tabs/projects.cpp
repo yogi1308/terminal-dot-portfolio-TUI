@@ -1,6 +1,7 @@
 #include <ftxui/dom/elements.hpp>
 #include "../helpers/bullet-points.cpp"
 #include "../components/sidebar.cpp"
+#include "../components/navbar.cpp"
 
 using namespace ftxui;
 
