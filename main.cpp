@@ -36,7 +36,7 @@ int main()
 
     using namespace std::chrono_literals; // loader
     std::thread([&] {
-        std::this_thread::sleep_for(0s); // Wait
+        std::this_thread::sleep_for(10s); // Wait
         show_blinker = false;              // Flip switch
         screen.Post(Event::Custom);      // Wake up screen
     }).detach();                         // Run in background
