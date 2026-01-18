@@ -87,10 +87,10 @@ Element Projects(int proj_tab) {
 
     switch (proj_tab) {
         case 0: name = "ssh terminal.portfolio" ; date = "January 2025" ; preview = "ssh terminal.portfolio.shreetej" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake" ; break;
-        case 1: name = "Basic Google Drive" ; date = "December 2025" ; preview = "https://file-uploader-orpin.vercel.app/" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "" ; break;
-        case 2: name = "Git Gemini Automation Shell Script" ; date = "November 2025" ; preview = "https://github.com/yogi1308/shell-scripts" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "" ; break;
-        case 3: name = "CLI Art Generator" ; date = "November 2025" ; preview = "https://github.com/yogi1308/cli-art" ; src = "https://github.com/yogi1308/cli-art" ; stack = "" ; break; 
-        case 4: name = "Resume/CV Builder" ; date = "June 2025" ; preview = "https://sunny-fudge-81c254.netlify.app/" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "" ; break; 
+        case 1: name = "Basic Google Drive" ; date = "December 2025" ; preview = "https://file-uploader-orpin.vercel.app/" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "Node.js | Express | PostgreSQL | Prisma | ejs" ; break;
+        case 2: name = "Git Gemini Automation Shell Script" ; date = "November 2025" ; preview = "https://github.com/yogi1308/shell-scripts" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "Shell Script | Gemini API" ; break;
+        case 3: name = "CLI Art Generator" ; date = "November 2025" ; preview = "https://github.com/yogi1308/cli-art" ; src = "https://github.com/yogi1308/cli-art" ; stack = "Python | Pillow | Colorama" ; break; 
+        case 4: name = "Resume/CV Builder" ; date = "June 2025" ; preview = "https://sunny-fudge-81c254.netlify.app/" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "React.js | HTML | CSS" ; break; 
         default: name = "ssh terminal.portfolio" ; date = "January 2025" ; preview = "ssh terminal.portfolio.shreetej" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake" ; break;
     }
 
