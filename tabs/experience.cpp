@@ -1,5 +1,6 @@
 #include <ftxui/dom/elements.hpp>
 #include "../helpers/bullet-points.cpp"
+#include "../components/sidebar.cpp"
 
 using namespace ftxui;
 
@@ -51,20 +52,26 @@ Element ExperinceDetails(std::string position, std::string dates, std::string lo
 
 Element Experience(int exp_tab) 
 {
+    std::string position, dates, location;
+    exp_tab = ((exp_tab % 3) + 3) % 3;
+
+    switch (exp_tab) {
+        case 0: position = "Office Assistant" ; dates = "March 2025 - Present" ; location = "Enterprise Technology Space Management, ASU"; break;
+        case 1: position = "Documentation Lead" ; dates = "January 2025 - May 2025" ; location = "NUETech, EPICS ASU"; break;
+        case 2: position = "Meeting Lead" ; dates = "August 2024 - December 2024" ; location = "Saayam for All, EPICS ASU"; break;
+        default: position = "Office Assistant" ; dates = "March 2025 - Present" ; location = "Enterprise Technology Space Management, ASU"; break;
+    }
+
+    std::string my_tabs[] = {
+        "Office Assistant", "Documentation Lead", "Meeting Lead"
+    };
+
     return hbox
     ({
-        flexbox
-        ({
-            text("Office Assistant"),
-            text("Documentation Lead"),
-            text("Meeting Lead")
-        }, FlexboxConfig()
-            .Set(FlexboxConfig::Direction::Column)
-            .SetGap(0, 1)
-        ),
+        Sidebar(my_tabs, exp_tab, 3),
         separatorEmpty(),
         separator(),
         separatorEmpty(),
-        ExperinceDetails("Office Assistant", "March 2025 - Present", "Enterprise Technology Space Management, ASU")
+        ExperinceDetails(position, dates, location)
     });
 }
