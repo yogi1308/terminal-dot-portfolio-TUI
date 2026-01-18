@@ -1,0 +1,20 @@
+name: Deploy to Azure
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy using SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.AZURE_HOST }}
+        username: azureuser
+        key: ${{ secrets.AZURE_KEY }}
+        port: 22
+        script: |
+          # Run the deploy script we created earlier
+          /home/azureuser/deploy.sh
