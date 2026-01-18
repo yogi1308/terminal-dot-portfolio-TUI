@@ -21,11 +21,15 @@ Element Footer(std::string tab) {
     }
     else if (tab == "experience" || tab == "projects")
     {
-        return flexbox({FooterElement("↑/↓ ", "Navigate"), FooterElement("q ", "quit")}, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceEvenly));
+        return flexbox({FooterElement("↑/↓ ", "navigate"), FooterElement("q ", "quit")}, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceEvenly));
     }
     else if (tab == "contact me")
     {
-        return flexbox({FooterElement("↑/↓ ", "Navigate"), FooterElement("enter ", "select"), FooterElement("q ", "quit")}, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceEvenly));
+        return flexbox({FooterElement("↑/↓ ", "navigate"), FooterElement("enter ", "select"), FooterElement("q ", "quit")}, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceEvenly));
+    }
+    else if (tab == "contact form")
+    {
+        return flexbox({FooterElement("tab/shift+tab ", "navigate input elements"), FooterElement("enter ", "submit"), FooterElement("ctrl+enter/shift+enter ", "newline"), FooterElement("esc ", "back")}, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceEvenly));
     }
     return text("");
 }
