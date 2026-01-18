@@ -14,15 +14,15 @@
 #include "components/footer.cpp"
 #include "tabs/contact-form.cpp"
 
-using namespace ftxui; // Save typing: allows writing 'text' instead of 'ftxui::text'
+using namespace ftxui;
 
-Element blinker() {
+Element blinker(bool is_visible) {
     FlexboxConfig config;
     config.justify_content = FlexboxConfig::JustifyContent::Center;
 
     return flexbox({
         text("shreetej hadge"),
-        blink(text("█") | color(Color::RGB(77, 163, 255))) 
+        is_visible ? text("█") | color(Color::RGB(77, 163, 255)) : text(" ") 
     }, config);
 }
 
@@ -33,17 +33,22 @@ int main()
     bool show_contact_form = false;
     int tab_index{0}, exp_tab{0}, proj_tab{0}, contact_tab{0};
     auto screen = ScreenInteractive::Fullscreen();
+    bool blink_state = true;
 
     using namespace std::chrono_literals; // loader
     std::thread([&] {
-        std::this_thread::sleep_for(10s); // Wait
-        show_blinker = false;              // Flip switch
-        screen.Post(Event::Custom);      // Wake up screen
-    }).detach();                         // Run in background
+        for (int i = 0; i < 10; ++i) {  // Loop 20 times: 20 * 0.5s = 10 seconds
+            std::this_thread::sleep_for(0.5s); 
+            blink_state = !blink_state;  
+            screen.Post(Event::Custom);  
+        }
+        show_blinker = false; 
+        screen.Post(Event::Custom);      
+    }).detach();
 
     auto renderer = Renderer([&] { 
         if (show_blinker) {
-            return blinker() | center;
+            return blinker(blink_state) | center;
         }
         else {
             Element navbar = Navbar(tab_index);
