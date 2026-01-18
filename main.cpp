@@ -73,6 +73,9 @@ int main()
         else if (event == Event::ArrowDown && tab_index == 2) {proj_tab++;}
         else if (event == Event::ArrowUp && tab_index == 3) {contact_tab--;}
         else if (event == Event::ArrowDown && tab_index == 3) {contact_tab++;}
+        else if (event == Event::Return && tab_index == 3) {
+            
+        }
 
         return false;
     });
