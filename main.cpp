@@ -23,7 +23,7 @@ const int TARGET_AREA = 3500;   // The "Total Space" you need (e.g. 100x30 = 300
 
 // Helper to calculate height using INVERSE ratio
 int get_min_height(int current_width) {
-    if (current_width <= 0) return 999; // Safety check
+    if (current_width <= 0) return 999; 
     return TARGET_AREA / current_width;
 }
 
@@ -44,7 +44,7 @@ int main()
 
     using namespace std::chrono_literals; // loader
     std::thread([&] {
-        for (int i = 0; i < 5.5; ++i) {  // Loop 20 times: 20 * 0.5s = 10 seconds
+        for (int i = 0; i < 5.5; ++i) { 
             std::this_thread::sleep_for(0.5s); 
             blink_state = !blink_state;  
             screen.Post(Event::Custom);  
@@ -58,7 +58,7 @@ int main()
         int req_height = get_min_height(term_size.dimx);
         if (term_size.dimx < MIN_WIDTH || term_size.dimy < req_height) {
             return hbox({
-                text("please resize your terminal, your terminal window is not big enough or zoom out") | bold, // blinker()
+                text("please resize your terminal, your terminal window is not big enough or zoom out") | bold, 
             }) | center ;
         }
         if (show_blinker) {
@@ -118,7 +118,6 @@ int main()
                 form_status_color = Color::Yellow;
                 
                 std::thread([&, name_val=name, email_val=email, msg_val=message] { // Spawn a detached thread so the UI doesn't freeze while waiting for curl
-                    
                     bool success = send_message(name_val, email_val, msg_val);
 
                     if (success) {

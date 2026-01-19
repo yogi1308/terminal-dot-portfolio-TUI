@@ -3,8 +3,6 @@
 
 using namespace ftxui;
 
-// (Note: These globals might be unused if you initialized components in main.cpp, 
-// but we keep them here to match your file structure)
 std::string name = "";
 std::string email = "";
 std::string message = "";
@@ -40,8 +38,6 @@ Element ContactForm(Component name_comp, Component email_comp, Component message
         text("send me a message") | bold | color(Color::RGB(77, 163, 255)),
         separator(),
         separatorEmpty(),
-        
-        // NAME FIELD
         vbox({
             text("name:") | color(Color::GrayDark), 
             hbox({
@@ -50,8 +46,6 @@ Element ContactForm(Component name_comp, Component email_comp, Component message
             })
         }),
         separatorEmpty(),
-        
-        // EMAIL FIELD
         vbox({
             text("email:") | color(Color::GrayDark), 
             hbox({
@@ -60,8 +54,6 @@ Element ContactForm(Component name_comp, Component email_comp, Component message
             })
         }),
         separatorEmpty(),
-        
-        // MESSAGE FIELD
         vbox({
             text("message:") | color(Color::GrayDark), 
             hbox({
