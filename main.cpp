@@ -44,7 +44,7 @@ int main()
 
     using namespace std::chrono_literals; // loader
     std::thread([&] {
-        for (int i = 0; i < 7.5; ++i) {  // Loop 20 times: 20 * 0.5s = 10 seconds
+        for (int i = 0; i < 5.5; ++i) {  // Loop 20 times: 20 * 0.5s = 10 seconds
             std::this_thread::sleep_for(0.5s); 
             blink_state = !blink_state;  
             screen.Post(Event::Custom);  
