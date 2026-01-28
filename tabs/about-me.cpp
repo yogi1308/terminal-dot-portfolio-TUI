@@ -19,7 +19,7 @@ Element Skills()
                 text("[ languages ] ") | color(accent),
                 flexbox
                 ({
-                    text("C++ "),
+                    text("C++ ") | color(Color::Default),
                     BulletPoints("Python  "),
                     BulletPoints("Java  "),
                     BulletPoints("JavaScript  "),
@@ -31,7 +31,7 @@ Element Skills()
                 text("[ frontend  ] ") | color(accent),
                 flexbox
                 ({
-                    text("ReactJS "),
+                    text("ReactJS ") | color(Color::Default),
                     BulletPoints("TailWindCSS  "),
                     BulletPoints("HTML  "),
                     BulletPoints("CSS  ")
@@ -42,7 +42,7 @@ Element Skills()
                 text("[  backend  ] ") | color(accent),
                 flexbox
                 ({
-                    text("NodeJS "),
+                    text("NodeJS ") | color(Color::Default),
                     BulletPoints("ExpressJS  "),
                     BulletPoints("PostgreSQL  "),
                     BulletPoints("Prisma ORM  ")
@@ -53,7 +53,7 @@ Element Skills()
                 text("[   tools   ] ") | color(accent),
                 flexbox
                 ({
-                    text("Git "),
+                    text("Git ") | color(Color::Default),
                     BulletPoints("Linux  "),
                     BulletPoints("Window  ")
                 }, FlexboxConfig().Set(FlexboxConfig::Wrap::Wrap))

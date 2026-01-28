@@ -27,7 +27,7 @@ Element ContactMe(int contact_tab)
     ({
         flexbox
         ({
-            text("☉   send me a message"),
+            text("☉   send me a message") | color(Color::Default),
             text("enter") | color(Color::GrayDark)
         }, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceBetween)) | borderLight,
         separatorEmpty(),

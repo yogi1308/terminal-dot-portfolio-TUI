@@ -6,7 +6,7 @@ using namespace ftxui; // Save typing: allows writing 'text' instead of 'ftxui::
 
 inline Element Inactive_Tab(std::string tab) {
     tab = " " + tab;
-    return hbox({text(std::string(1, tab[1])), text(tab) | color(Color::GrayDark)});
+    return hbox({text(std::string(1, tab[1])) | color(Color::Default), text(tab) | color(Color::GrayDark)});
 }
 
 inline Element Navbar_Tabs(int active_tab, std::string tab) 

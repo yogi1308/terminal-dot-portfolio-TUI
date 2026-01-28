@@ -15,7 +15,7 @@ inline Element Sidebar_Active_Tab(std::string tab) {
 inline Element Sidebar_Inactive_Tab(std::string tab) {
     tab = "  " + tab + "  ";
     if (tab == "  Git Gemini Automation Shell Script  ") {
-        return vbox({text("  Git Gemini Automation"), text("  Shell Script")});  
+        return vbox({text("  Git Gemini Automation") | color(Color::Default), text("  Shell Script") | color(Color::Default)});  
     }
     return text(tab) | color(Color::Default);
 }

@@ -41,7 +41,7 @@ Element ExperinceDetails(std::string position, std::string dates, std::string lo
     ({
         flexbox
         ({
-            text(position),
+            text(position) | color(Color::Default),
             text(dates) | color(Color::GrayDark)
         }, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceBetween)),
         text({location}) | color(Color::GrayDark),

@@ -58,7 +58,7 @@ int main()
         int req_height = get_min_height(term_size.dimx);
         if (term_size.dimx < MIN_WIDTH || term_size.dimy < req_height) {
             return hbox({
-                text("please resize your terminal, your terminal window is not big enough or zoom out") | bold, 
+                text("please resize your terminal, your terminal window is not big enough or zoom out") | bold | color(Color::Default), 
             }) | center ;
         }
         if (show_blinker) {
@@ -66,7 +66,7 @@ int main()
             config.justify_content = FlexboxConfig::JustifyContent::Center;
 
             return flexbox({
-                text("shreetej hadge"),
+                text("shreetej hadge") | color(Color::Default),
                 blinker(blink_state),
             }, config) | center;
         }
