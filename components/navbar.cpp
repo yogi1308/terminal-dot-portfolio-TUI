@@ -24,7 +24,7 @@ inline Element Navbar(int active_tab)
     config.justify_content = FlexboxConfig::JustifyContent::SpaceEvenly;
 
     return flexbox({
-        text("shreetej hadge") | center,
+        text("shreetej hadge") | center | color(Color::Default),
         separatorLight() | color(Color::GrayDark),
         Navbar_Tabs(active_tab, "about me"),
         separatorLight() | color(Color::GrayDark),

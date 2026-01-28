@@ -57,7 +57,7 @@ Element ProjectDetails(std::string name, std::string date, std::string preview, 
         ({
             flexbox
             ({
-                text(name),
+                text(name) | color(Color::Default),
                 text(date) | color(Color::GrayDark)
             }, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceBetween)),
             hbox
@@ -88,12 +88,12 @@ Element Projects(int proj_tab) {
     proj_tab = ((proj_tab % 5) + 5) % 5;
 
     switch (proj_tab) {
-        case 0: name = "ssh terminal@shreetej.me" ; date = "January 2025" ; preview = "ssh terminal@shreetej.me.shreetej" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake" ; break;
-        case 1: name = "Basic Google Drive" ; date = "December 2025" ; preview = "https://file-uploader-orpin.vercel.app/" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "Node.js | Express | PostgreSQL | Prisma | ejs" ; break;
+        case 0: name = "ssh terminal@shreetej.me" ; date = "January 2025" ; preview = "ssh terminal@shreetej.me.shreetej" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake | Azure | Github Actions" ; break;
+        case 1: name = "Basic Google Drive" ; date = "December 2025" ; preview = "https://file-uploader-orpin.vercel.app/" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "Node.js | Express | PostgreSQL | Prisma ORM | ejs | Cloudinary" ; break;
         case 2: name = "Git Gemini Automation Shell Script" ; date = "November 2025" ; preview = "https://github.com/yogi1308/shell-scripts" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "Shell Script | Gemini API" ; break;
-        case 3: name = "CLI Art Generator" ; date = "November 2025" ; preview = "https://github.com/yogi1308/cli-art" ; src = "https://github.com/yogi1308/cli-art" ; stack = "Python | Pillow | Colorama" ; break; 
+        case 3: name = "CLI Art Generator" ; date = "November 2025" ; preview = "https://github.com/yogi1308/cli-art" ; src = "https://github.com/yogi1308/cli-art" ; stack = "Python | OpenCV | Pillow | Colorama" ; break; 
         case 4: name = "Resume/CV Builder" ; date = "June 2025" ; preview = "https://sunny-fudge-81c254.netlify.app/" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "React.js | HTML | CSS" ; break; 
-        default: name = "ssh terminal@shreetej.me" ; date = "January 2025" ; preview = "ssh terminal@shreetej.me.shreetej" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake" ; break;
+        default: name = "ssh terminal@shreetej.me" ; date = "January 2025" ; preview = "ssh terminal@shreetej.me.shreetej" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake | Azure | Github Actions" ; break;
     }
 
     std::string my_tabs[] = {

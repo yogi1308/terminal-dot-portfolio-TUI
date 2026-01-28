@@ -8,7 +8,7 @@ Element FooterElement(std::string controls, std::string values)
     ({
         hbox
         ({
-            text(controls),
+            text(controls) | color(Color::Default),
             text(values) | color(Color::GrayDark)
         })
     });

@@ -39,7 +39,7 @@ Element ContactForm(Component name_comp, Component email_comp, Component message
         separator(),
         separatorEmpty(),
         vbox({
-            text("name:") | color(Color::GrayDark), 
+            text("name:") | color(Color::Default), 
             hbox({
                 arrow_style(name_comp),
                 input_style(name_comp)
@@ -47,7 +47,7 @@ Element ContactForm(Component name_comp, Component email_comp, Component message
         }),
         separatorEmpty(),
         vbox({
-            text("email:") | color(Color::GrayDark), 
+            text("email:") | color(Color::Default), 
             hbox({
                 arrow_style(email_comp),
                 input_style(email_comp)
@@ -55,7 +55,7 @@ Element ContactForm(Component name_comp, Component email_comp, Component message
         }),
         separatorEmpty(),
         vbox({
-            text("message:") | color(Color::GrayDark), 
+            text("message:") | color(Color::Default), 
             hbox({
                 arrow_style(message_comp),
                 input_style(message_comp)
