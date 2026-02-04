@@ -36,5 +36,6 @@ inline Element Sidebar(std::string tabs[], int active_tab, int size)
         .Set(FlexboxConfig::Direction::Column)
         .SetGap(0, 1)
         .Set(FlexboxConfig::AlignItems::Stretch) 
+        .Set(FlexboxConfig::JustifyContent::FlexStart)
     );
 }

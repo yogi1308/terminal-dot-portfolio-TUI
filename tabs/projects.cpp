@@ -40,12 +40,13 @@ Element ProjectDetailPoints(std::string name)
             BulletPoints("Ensured accessibility and cross-browser compatibility through semantic HTML and extensive CSS styling.")
         });
     }
-    else if (name == "ssh terminal@shreetej.me")
+    else if (name == "Portfolio TUI")
     {
         return vbox({
             BulletPoints("Developed an interactive Terminal User Interface (TUI) portfolio using C++ and the FTXUI library, featuring keyboard-driven navigation and a responsive layout."),
             BulletPoints("Made the TUI accessible globally by serving it via ssh and hosting it on a custom configured Microsoft Azure Virtual Machine"),
-            BulletPoints("Integrated a functional contact form with input validation and asynchronous message dispatching using cURL and std::thread to maintain UI responsiveness.")
+            BulletPoints("Integrated a functional contact form with input validation and asynchronous message dispatching using cURL and std::thread to maintain UI responsiveness."),
+            BulletPoints("Configured GitHub Actions to automatically build the C++/CMake binary and deploy updates to the Azure VM on push, ensuring the live SSH-accessible portfolio stays up to date.")
         });
     }
     return text("");
@@ -88,16 +89,16 @@ Element Projects(int proj_tab) {
     proj_tab = ((proj_tab % 5) + 5) % 5;
 
     switch (proj_tab) {
-        case 0: name = "ssh terminal@shreetej.me" ; date = "January 2025" ; preview = "ssh terminal@shreetej.me.shreetej" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake | Azure | Github Actions" ; break;
-        case 1: name = "Basic Google Drive" ; date = "December 2025" ; preview = "https://file-uploader-orpin.vercel.app/" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "Node.js | Express | PostgreSQL | Prisma ORM | ejs | Cloudinary" ; break;
-        case 2: name = "Git Gemini Automation Shell Script" ; date = "November 2025" ; preview = "https://github.com/yogi1308/shell-scripts" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "Shell Script | Gemini API" ; break;
-        case 3: name = "CLI Art Generator" ; date = "November 2025" ; preview = "https://github.com/yogi1308/cli-art" ; src = "https://github.com/yogi1308/cli-art" ; stack = "Python | OpenCV | Pillow | Colorama" ; break; 
-        case 4: name = "Resume/CV Builder" ; date = "June 2025" ; preview = "https://sunny-fudge-81c254.netlify.app/" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "React.js | HTML | CSS" ; break; 
-        default: name = "ssh terminal@shreetej.me" ; date = "January 2025" ; preview = "ssh terminal@shreetej.me.shreetej" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake | Azure | Github Actions" ; break;
+        case 0: name = "Portfolio TUI" ; date = "January 2025" ; preview = "ssh portfolio@shreetejhadge.dev" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake | Microsoft Azure | Github Actions" ; break;
+        case 1: name = "Basic Google Drive" ; date = "December 2025" ; preview = "https://file-uploader-orpin.vercel.app/" ; src = "https://github.com/yogi1308/basic-google-drive" ; stack = "Node.js | Express | PostgreSQL | Prisma ORM | ejs | Cloudinary" ; break;
+        case 2: name = "Git Gemini Automation Shell Script" ; date = "November 2025" ; preview = "N/A" ; src = "https://github.com/yogi1308/shell-scripts" ; stack = "Bash Script | Gemini API | Git" ; break;
+        case 3: name = "CLI Art Generator" ; date = "November 2025" ; preview = "N/A" ; src = "https://github.com/yogi1308/cli-art" ; stack = "Python | OpenCV | Pillow | Colorama" ; break; 
+        case 4: name = "Resume/CV Builder" ; date = "June 2025" ; preview = "https://sunny-fudge-81c254.netlify.app/" ; src = "https://github.com/yogi1308/cv-application" ; stack = "React.js | HTML | CSS | Vite" ; break; 
+        default: name = "Portfolio TUI" ; date = "January 2025" ; preview = "ssh portfolio@shreetejhadge.dev" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake | Microsoft Azure | Github Actions" ; break;
     }
 
     std::string my_tabs[] = {
-        "ssh terminal@shreetej.me", 
+        "Portfolio TUI", 
         "Basic Google Drive",
         "Git Gemini Automation Shell Script", 
         "CLI Art Generator", 
