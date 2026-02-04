@@ -1,14 +1,43 @@
-name: Deploy to Azure
+name: Build and Deploy
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    
     steps:
-    - name: Deploy using SSH
+    # 1. Checkout Code
+    - uses: actions/checkout@v4
+
+    # 2. Install CMake
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y cmake g++
+
+    # 3. Build the Binary
+    - name: Build TUI
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make
+
+    # 4. Upload to Server
+    - name: Copy binary to Server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.AZURE_HOST }}
+        username: azureuser
+        key: ${{ secrets.AZURE_KEY }}
+        port: 22
+        source: "build/portfolio"
+        target: "/home/azureuser/deploy_temp"
+        strip_components: 1
+
+    # 5. Install on Server
+    - name: Install and Restart
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.AZURE_HOST }}
@@ -16,5 +45,17 @@ jobs:
         key: ${{ secrets.AZURE_KEY }}
         port: 22
         script: |
-          # Run the deploy script we created earlier
-          /home/azureuser/deploy.sh
+          # 1. Safety: Kill any old ghost processes on 2222 (Just in case)
+          sudo fuser -k 2222/tcp || true
+
+          # 2. Forcefully replace the binary
+          # 'install' is atomic and safe even if the file is in use
+          sudo install -m 755 /home/azureuser/deploy_temp/portfolio /usr/local/bin/portfolio
+          
+          # 3. Clean up
+          rm -rf /home/azureuser/deploy_temp
+          
+          # 4. Reset: Kill active sessions so users see the new version immediately
+          sudo pkill -u portfolio || true
+          
+          echo "✅ Successfully deployed and reset active sessions."
