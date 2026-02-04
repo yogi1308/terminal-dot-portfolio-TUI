@@ -12,7 +12,7 @@ For Non-technical guys, you paste the above command in the terminal(if you don't
 
 ## Stack
 
-* **C++**=
+* **C++**
 * **CMake**
 * **Microsoft Azure**: Hosts the Linux VM which serves the TUI application to the world.
 * **GitHub Actions**: Automatically builds the binary and deploys it to the Azure server on every push, ensuring the live portfolio is always up to date.
