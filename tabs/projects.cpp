@@ -7,6 +7,15 @@ using namespace ftxui;
 
 Element ProjectDetailPoints(std::string name) 
 {
+    if (name == "NBA Network") {
+        return vbox({
+            BulletPoints("Built an interactive network visualization of NBA history using Graphology and SigmaJS, modeling NBA players as nodes and shared-team relationships as undirected weighted edges based on the number of seasons played together."),
+            BulletPoints("Developed a Python data pipeline using nba_api to collect career and team-history data for NBA players, query team rosters by season, and generate player–teammate relationships while tracking completed and failed requests for recoverable data collection."),
+            BulletPoints("Engineered a NetworkX graph-processing pipeline to construct the teammate network, calculate edge weights from shared seasons, and generate reproducible ForceAtlas2 layouts before exporting the graph to JSON for the web application."),
+            BulletPoints("Implemented graph traversal and path-finding algorithms to identify shortest paths between players, paths of specific distances between two players, and paths of distances within a range"),
+            BulletPoints("Developed interactive exploration tools with React, Zustand, and Tailwind, supporting player search, team/decade filtering, network-depth exploration, and graph-based metrics such as connectivity")
+        });
+    }
     if (name == "Basic Google Drive") {
         return vbox({
             BulletPoints("Developed a full-stack file storage application using Node.js, Express, and PostgreSQL (via Prisma ORM) to efficiently manage user data and complex file hierarchies."),
@@ -86,18 +95,20 @@ Element ProjectDetails(std::string name, std::string date, std::string preview, 
 Element Projects(int proj_tab) {
 
     std::string name, date, preview, src, stack;
-    proj_tab = ((proj_tab % 5) + 5) % 5;
+    proj_tab = ((proj_tab % 6) + 6) % 6;
 
     switch (proj_tab) {
-        case 0: name = "Portfolio TUI" ; date = "January 2025" ; preview = "ssh portfolio@shreetejhadge.dev" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake | Microsoft Azure | Github Actions" ; break;
-        case 1: name = "Basic Google Drive" ; date = "December 2025" ; preview = "https://file-uploader-orpin.vercel.app/" ; src = "https://github.com/yogi1308/basic-google-drive" ; stack = "Node.js | Express | PostgreSQL | Prisma ORM | ejs | Cloudinary" ; break;
-        case 2: name = "Git Gemini Automation Shell Script" ; date = "November 2025" ; preview = "N/A" ; src = "https://github.com/yogi1308/shell-scripts" ; stack = "Bash Script | Gemini API | Git" ; break;
-        case 3: name = "CLI Art Generator" ; date = "November 2025" ; preview = "N/A" ; src = "https://github.com/yogi1308/cli-art" ; stack = "Python | OpenCV | Pillow | Colorama" ; break; 
-        case 4: name = "Resume/CV Builder" ; date = "June 2025" ; preview = "https://sunny-fudge-81c254.netlify.app/" ; src = "https://github.com/yogi1308/cv-application" ; stack = "React.js | HTML | CSS | Vite" ; break; 
-        default: name = "Portfolio TUI" ; date = "January 2025" ; preview = "ssh portfolio@shreetejhadge.dev" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake | Microsoft Azure | Github Actions" ; break;
+        case 0: name = "NBA Network" ; date = "August 2026" ; preview = "https://nba-network.vercel.app/" ; src = "https://github.com/yogi1308/nba-network" ; stack = "React | Python | Tailwind | Zustand | Graphology | SigmaJS | Network Theory | NetworkX | ForceAtlas2" ; break;
+        case 1: name = "Portfolio TUI" ; date = "January 2025" ; preview = "ssh portfolio@shreetejhadge.dev" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake | Microsoft Azure | Github Actions" ; break;
+        case 2: name = "Basic Google Drive" ; date = "December 2025" ; preview = "https://file-uploader-orpin.vercel.app/" ; src = "https://github.com/yogi1308/basic-google-drive" ; stack = "Node.js | Express | PostgreSQL | Prisma ORM | ejs | Cloudinary" ; break;
+        case 3: name = "Git Gemini Automation Shell Script" ; date = "November 2025" ; preview = "N/A" ; src = "https://github.com/yogi1308/shell-scripts" ; stack = "Bash Script | Gemini API | Git" ; break;
+        case 4: name = "CLI Art Generator" ; date = "November 2025" ; preview = "N/A" ; src = "https://github.com/yogi1308/cli-art" ; stack = "Python | OpenCV | Pillow | Colorama" ; break; 
+        case 5: name = "Resume/CV Builder" ; date = "June 2025" ; preview = "https://sunny-fudge-81c254.netlify.app/" ; src = "https://github.com/yogi1308/cv-application" ; stack = "React.js | HTML | CSS | Vite" ; break; 
     }
 
     std::string my_tabs[] = {
+        "NBA Network", 
+        // "TEEJ", 
         "Portfolio TUI", 
         "Basic Google Drive",
         "Git Gemini Automation Shell Script", 
@@ -107,7 +118,7 @@ Element Projects(int proj_tab) {
 
     return hbox
     ({
-        Sidebar(my_tabs, proj_tab, 5),
+        Sidebar(my_tabs, proj_tab, 6),
         separatorEmpty(),
         separator(),
         separatorEmpty(),
