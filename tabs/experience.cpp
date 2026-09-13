@@ -1,77 +1,99 @@
-#include <ftxui/dom/elements.hpp>
-#include "../helpers/bullet-points.cpp"
 #include "../components/sidebar.cpp"
+#include "../helpers/bullet-points.cpp"
+#include <ftxui/dom/elements.hpp>
 
 using namespace ftxui;
 
-Element Details(std::string position, std::string dates, std::string location) 
-{
-    if (position == "Office Assistant" || dates == "March 2025 - Present" || location == "Enterprise Technology Space Management, ASU") 
-    {
-        return vbox({
-            BulletPoints("Maintained accurate departmental records and hardware inventory by performing data entry and documenting surplus and work orders."),
-            BulletPoints("Managed computer hardware like monitors, CPU’s, laptops, etc. for department staff, including setup, breakdown, transportation, and surplus."),
-            BulletPoints("Coordinated the maintenance and repair for the Enterprise Technology cart fleet by conducting routine inspections and liaising with external vendors to resolve mechanical issues promptly.")
-        });
+Element Details(std::string position, std::string dates, std::string location) {
+    if (position == "Office Assistant" || dates == "March 2025 - Present" ||
+        location == "Enterprise Technology Space Management, ASU") {
+        return vbox(
+            {BulletPoints(
+                 "Maintained accurate departmental records and hardware "
+                 "inventory by performing data entry and documenting "
+                 "surplus and work orders."),
+             BulletPoints(
+                 "Managed computer hardware like monitors, CPU’s, "
+                 "laptops, etc. for department staff, including setup, "
+                 "breakdown, transportation, and surplus."),
+             BulletPoints(
+                 "Coordinated the maintenance and repair for the "
+                 "Enterprise Technology cart fleet by conducting routine "
+                 "inspections and liaising with external vendors to "
+                 "resolve mechanical issues promptly.")});
+    } else if (position == "Documentation Lead" ||
+               dates == "January 2025 - May 2025" ||
+               location == "NUETech, EPICS ASU") {
+        return vbox(
+            {BulletPoints(
+                 "Led the creation and organization of comprehensive "
+                 "project documentation, ensuring clarity and accuracy."),
+             BulletPoints("Lead documentation and ensured each respective team "
+                          "member is "
+                          "documenting their work in the design document."),
+             BulletPoints(
+                 "Presented documentation updates to stakeholders, ensuring "
+                 "transparency and alignment with project milestones."),
+             BulletPoints("Conducted regular reviews of documentation to "
+                          "ensure alignment "
+                          "with project goals and stakeholder requirements.")});
     }
-    else if (position == "Documentation Lead" || dates == "January 2025 - May 2025" || location == "NUETech, EPICS ASU")
-    {
-        return vbox({
-            BulletPoints("Led the creation and organization of comprehensive project documentation, ensuring clarity and accuracy."),
-            BulletPoints("Lead documentation and ensured each respective team member is documenting their work in the design document."),
-            BulletPoints("Presented documentation updates to stakeholders, ensuring transparency and alignment with project milestones."),
-            BulletPoints("Conducted regular reviews of documentation to ensure alignment with project goals and stakeholder requirements.")
-        });
-    }
-    else if (position == "Meeting Lead" || dates == "August 2024 - December 2024" || location == "Saayam for All, EPICS ASU")
-    {
-        return vbox({
-            BulletPoints("Planned, organized, and facilitated weekly team meetings and created detailed meeting agendas."),
-            BulletPoints("Documented meetings, coordinated schedules, tracked action items, and supported project planning to ensure timely deliverables."),
-            BulletPoints("Developed and maintained a centralized repository for meeting notes, action items, and project updates."),
-            BulletPoints("Monitored progress on action items and provided regular updates to the team and project leads.")
-        });
-    }
+    // else if (position == "Meeting Lead" || dates == "August 2024 - December
+    // 2024" || location == "Saayam for All, EPICS ASU")
+    // {
+    //     return vbox({
+    //         BulletPoints("Planned, organized, and facilitated weekly team
+    //         meetings and created detailed meeting agendas."),
+    //         BulletPoints("Documented meetings, coordinated schedules, tracked
+    //         action items, and supported project planning to ensure timely
+    //         deliverables."), BulletPoints("Developed and maintained a
+    //         centralized repository for meeting notes, action items, and
+    //         project updates."), BulletPoints("Monitored progress on action
+    //         items and provided regular updates to the team and project
+    //         leads.")
+    //     });
+    // }
     return text("");
 }
 
-Element ExperinceDetails(std::string position, std::string dates, std::string location) 
-{
-    return vbox
-    ({
-        flexbox
-        ({
-            text(position) | color(Color::Default),
-            text(dates) | color(Color::GrayDark)
-        }, FlexboxConfig().Set(FlexboxConfig::JustifyContent::SpaceBetween)),
-        text({location}) | color(Color::GrayDark),
-        separatorEmpty(),
-        Details(position, dates, location)
-    });
+Element ExperinceDetails(std::string position, std::string dates,
+                         std::string location) {
+    return vbox({flexbox({text(position) | color(Color::Default),
+                          text(dates) | color(Color::GrayDark)},
+                         FlexboxConfig().Set(
+                             FlexboxConfig::JustifyContent::SpaceBetween)),
+                 text({location}) | color(Color::GrayDark), separatorEmpty(),
+                 Details(position, dates, location)});
 }
 
-Element Experience(int exp_tab) 
-{
+Element Experience(int exp_tab) {
     std::string position, dates, location;
-    exp_tab = ((exp_tab % 3) + 3) % 3;
+    exp_tab = ((exp_tab % 2) + 2) % 2;
 
     switch (exp_tab) {
-        case 0: position = "Office Assistant" ; dates = "March 2025 - Present" ; location = "Enterprise Technology Space Management, ASU"; break;
-        case 1: position = "Documentation Lead" ; dates = "January 2025 - May 2025" ; location = "NUETech, EPICS ASU"; break;
-        case 2: position = "Meeting Lead" ; dates = "August 2024 - December 2024" ; location = "Saayam for All, EPICS ASU"; break;
-        default: position = "Office Assistant" ; dates = "March 2025 - Present" ; location = "Enterprise Technology Space Management, ASU"; break;
+    case 0:
+        position = "Office Assistant";
+        dates = "March 2025 - Present";
+        location = "Enterprise Technology Space Management, ASU";
+        break;
+    case 1:
+        position = "Documentation Lead";
+        dates = "January 2025 - May 2025";
+        location = "NUETech, EPICS ASU";
+        break;
+        // case 2: position = "Meeting Lead" ; dates = "August 2024 - December
+        // 2024" ; location = "Saayam for All, EPICS ASU"; break; default:
+        // position = "Office Assistant" ; dates = "March 2025 - Present" ;
+        // location = "Enterprise Technology Space Management, ASU"; break;
     }
 
     std::string my_tabs[] = {
-        "office assistant", "documentation lead", "meeting lead"
+        "office assistant",
+        "documentation lead",
+        // "meeting lead"
     };
 
-    return hbox
-    ({
-        Sidebar(my_tabs, exp_tab, 3),
-        separatorEmpty(),
-        separator(),
-        separatorEmpty(),
-        ExperinceDetails(position, dates, location)
-    });
+    return hbox({Sidebar(my_tabs, exp_tab, 2), separatorEmpty(), separator(),
+                 separatorEmpty(),
+                 ExperinceDetails(position, dates, location) | flex});
 }
