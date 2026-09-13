@@ -122,6 +122,6 @@ Element Projects(int proj_tab) {
         separatorEmpty(),
         separator(),
         separatorEmpty(),
-        ProjectDetails(name, date, preview, src, stack) | flex | flex
+        ProjectDetails(name, date, preview, src, stack) | flex 
     });
 }
