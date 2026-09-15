@@ -7,6 +7,15 @@ using namespace ftxui;
 
 Element ProjectDetailPoints(std::string name) 
 {
+    if (name == "Artist Portfolio Platform") {
+        return vbox({
+            BulletPoints("Built and deployed a full-stack personal platform for an independent artist, unifying music, merchandise, blog, and donation features into a single site using React 19, TypeScript, Vite, and Tailwind CSS, hosted on Vercel"),
+            BulletPoints("Implemented secure admin authentication with JWT to let the client manage all content (music, merch, blog posts) independently without exposing the site to unauthorized edits"),
+            BulletPoints("Owned the project end-to-end, from architecture, frontend, backend API, and deployment. Took it from concept to a live production site for an external, non-technical client"),
+            BulletPoints("Built a custom rich-text blog editor with Tiptap supporting images, video, code blocks, and tables, and integrated Cloudinary for automatic upload/organization of audio tracks, product photos, and cover art"),
+            BulletPoints("Integrated third-party services like Formspree and stripe to handle contact and donation flows, cutting backend complexity while keeping a fully custom front-end experience")
+        });
+    }
     if (name == "NBA Network") {
         return vbox({
             BulletPoints("Built an interactive network visualization of NBA history using Graphology and SigmaJS, modeling NBA players as nodes and shared-team relationships as undirected weighted edges based on the number of seasons played together."),
@@ -39,14 +48,25 @@ Element ProjectDetailPoints(std::string name)
             BulletPoints("Packaged the final script into standalone executables for both Windows (.exe), WSL and similar Ubuntu-based Linux systems using PyInstaller and published them on GitHub Releases."),
         });
     }
-    else if (name == "Resume/CV Builder")
+    // else if (name == "Resume/CV Builder")
+    // {
+    //     return vbox({
+    //         BulletPoints("Engineered a responsive CV/Resume application with React.js, supporting real-time data validation and seamless user input for various resume sections."),
+    //         BulletPoints("Designed and implemented reusable React components for modular resume creation, improving maintainability and scalability of the codebase."),
+    //         BulletPoints("Leveraged modern React features (hooks, context API) to manage application state efficiently and ensure a cohesive user experience."),
+    //         BulletPoints("Integrated print and PDF export capabilities, enabling users to download polished resumes directly from the browser."),
+    //         BulletPoints("Ensured accessibility and cross-browser compatibility through semantic HTML and extensive CSS styling.")
+    //     });
+    // }
+    else if (name == "Battleship")
     {
         return vbox({
-            BulletPoints("Engineered a responsive CV/Resume application with React.js, supporting real-time data validation and seamless user input for various resume sections."),
-            BulletPoints("Designed and implemented reusable React components for modular resume creation, improving maintainability and scalability of the codebase."),
-            BulletPoints("Leveraged modern React features (hooks, context API) to manage application state efficiently and ensure a cohesive user experience."),
-            BulletPoints("Integrated print and PDF export capabilities, enabling users to download polished resumes directly from the browser."),
-            BulletPoints("Ensured accessibility and cross-browser compatibility through semantic HTML and extensive CSS styling.")
+            BulletPoints("Designed and implemented a classic Battleship game with both single-player (vs. Computer Algorithm) and two-player modes using JavaScript, HTML, and CSS"),
+            BulletPoints("Engineered a modular game architecture featuring ship placement, turn-based attack logic, and win/loss detection."),
+            BulletPoints("Developed intuitive drag-and-drop ship placement and orientation controls, enhancing user experience and game strategy."),
+            BulletPoints("Built a custom computer algorithm opponent leveraging pattern-based attack logic and memory for realistic gameplay against the computer."),
+            BulletPoints("Applied advanced DOM manipulation for real-time UI updates, including rematch functionality and seamless transition between game states."),
+            BulletPoints("Implemented responsive interface with dynamic feedback for hits, misses, and sunk ships, ensuring clear in-game communication.")
         });
     }
     else if (name == "Portfolio TUI")
@@ -95,30 +115,33 @@ Element ProjectDetails(std::string name, std::string date, std::string preview, 
 Element Projects(int proj_tab) {
 
     std::string name, date, preview, src, stack;
-    proj_tab = ((proj_tab % 6) + 6) % 6;
+    proj_tab = ((proj_tab % 7) + 7) % 7;
 
     switch (proj_tab) {
         case 0: name = "NBA Network" ; date = "August 2026" ; preview = "https://nba-network.vercel.app/" ; src = "https://github.com/yogi1308/nba-network" ; stack = "React | Python | Tailwind | Zustand | Graphology | SigmaJS | Network Theory | NetworkX | ForceAtlas2" ; break;
-        case 1: name = "Portfolio TUI" ; date = "January 2025" ; preview = "ssh portfolio@shreetejhadge.dev" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake | Microsoft Azure | Github Actions" ; break;
-        case 2: name = "Basic Google Drive" ; date = "December 2025" ; preview = "https://file-uploader-orpin.vercel.app/" ; src = "https://github.com/yogi1308/basic-google-drive" ; stack = "Node.js | Express | PostgreSQL | Prisma ORM | ejs | Cloudinary" ; break;
-        case 3: name = "Git Gemini Automation Shell Script" ; date = "November 2025" ; preview = "N/A" ; src = "https://github.com/yogi1308/shell-scripts" ; stack = "Bash Script | Gemini API | Git" ; break;
-        case 4: name = "CLI Art Generator" ; date = "November 2025" ; preview = "N/A" ; src = "https://github.com/yogi1308/cli-art" ; stack = "Python | OpenCV | Pillow | Colorama" ; break; 
-        case 5: name = "Resume/CV Builder" ; date = "June 2025" ; preview = "https://sunny-fudge-81c254.netlify.app/" ; src = "https://github.com/yogi1308/cv-application" ; stack = "React.js | HTML | CSS | Vite" ; break; 
+        case 1: name = "Artist Portfolio Platform" ; date = "July 2026" ; preview = "https://teej01.vercel.app/" ; src = "https://github.com/yogi1308/teej" ; stack = "React | TypeScript | Vite | Tailwind CSS | React Router | Motion | Formspree | Stripe | Vercel | PostgreSQL | ExpressJS | Prisma ORM" ; break;
+        case 2: name = "Portfolio TUI" ; date = "January 2025" ; preview = "ssh portfolio@shreetejhadge.dev" ; src = "https://github.com/yogi1308/terminal-dot-portfolio-TUI" ; stack = "C++ | CMake | Microsoft Azure | Github Actions" ; break;
+        case 3: name = "Basic Google Drive" ; date = "December 2025" ; preview = "https://file-uploader-orpin.vercel.app/" ; src = "https://github.com/yogi1308/basic-google-drive" ; stack = "Node.js | Express | PostgreSQL | Prisma ORM | ejs | Cloudinary" ; break;
+        case 4: name = "Git Gemini Automation Shell Script" ; date = "November 2025" ; preview = "N/A" ; src = "https://github.com/yogi1308/shell-scripts" ; stack = "Bash Script | Gemini API | Git" ; break;
+        case 5: name = "CLI Art Generator" ; date = "November 2025" ; preview = "N/A" ; src = "https://github.com/yogi1308/cli-art" ; stack = "Python | OpenCV | Pillow | Colorama" ; break; 
+        // case 6: name = "Resume/CV Builder" ; date = "June 2025" ; preview = "https://sunny-fudge-81c254.netlify.app/" ; src = "https://github.com/yogi1308/cv-application" ; stack = "React.js | HTML | CSS | Vite" ; break; 
+        case 6: name = "Battleship" ; date = "May 2025" ; preview = "https://yogi1308.github.io/battleship/" ; src = "https://github.com/yogi1308/battleship" ; stack = "JavaScript | HTML | CSS | Webpack | Jest | TDD | Babel" ; break; 
     }
 
     std::string my_tabs[] = {
         "NBA Network", 
-        // "TEEJ", 
+        "Artist Portfolio Platform", 
         "Portfolio TUI", 
         "Basic Google Drive",
         "Git Gemini Automation Shell Script", 
         "CLI Art Generator", 
-        "Resume/CV Builder"
+        // "Resume/CV Builder"
+        "Battleship"
     };
 
     return hbox
     ({
-        Sidebar(my_tabs, proj_tab, 6),
+        Sidebar(my_tabs, proj_tab, 7),
         separatorEmpty(),
         separator(),
         separatorEmpty(),
